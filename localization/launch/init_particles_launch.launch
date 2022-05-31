@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="mm3" type="init_particles_caller.py" name="init_particle_node" output="screen">
+        
+    </node>
+</launch>

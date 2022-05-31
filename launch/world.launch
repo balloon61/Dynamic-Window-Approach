@@ -1,0 +1,49 @@
+<launch>
+  <arg name="x_pos" default="2.0"/>
+  <arg name="y_pos" default="-2.0"/>
+  <arg name="z_pos" default="-0"/>
+  <arg name="roll" default="0"/>
+  <arg name="pitch" default="0"/>
+  <arg name="yaw" default="1.57"/>
+  <arg name="x_goal" default="4.0"/>
+  <arg name="y_goal" default="4.0"/>
+  <arg name="rpm_max" default="50.0"/>
+  <arg name="rpm_min" default="25.0"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find mm3)/worlds/factory.world"/>
+ </include>
+	<param name= "robot_description" command="$(find xacro)/xacro $(find mm3)/urdf/mm3.xacro" />
+    <!-- Add in your robot name in the value tag -->
+    <param name = "my_robot" value="mmrobot"/>
+	<arg name ="init_pose" value="-x 0 -y 0 -z 0.5 -R 0 -P 0 -Y 0"/>
+
+    <!-- This command adds the controller variables you defined in the config file into ros's parameter list. Simply add the file name in the file tag -->
+	<rosparam file="$(find mm3)/config/robot_arm_controllers.yaml" command="load"/>
+
+	<!-- Node for publishing base footprint -->
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <param name="use_gui" value="False"/>
+    </node>
+
+    <!-- TF node that gives the static transformation between the world map and the base link of your robot. Change /base_link to the /root link name of your robot -->
+        <node pkg="tf" type="static_transform_publisher" name="map_to_odom" args="0 0 0 0 0 0 1 /map /odom 10" />
+    <node pkg="tf" type="static_transform_publisher" name="odom_to_foot_print" args="0 0 0 0 0 0 1 /odom /base_footprint 10" />
+    <node pkg="tf" type="static_transform_publisher" name="foot_print_to_base" args="0 0 0 0 0 0 1 /base_footprint /base_link 1" />
+
+    <!-- Controller spawner: Starts all the defined controllers with their configs. Just add your controller names defined in your config file into the args tag below   -->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    	output="screen" ns="/mmrobot" args=" joint_state_controller linear_joint l_arm_joint1 l_arm_joint2 l_arm_joint3 l_gripper_joint r_arm_joint1 r_arm_joint2 r_arm_joint3 r_gripper_joint mobile_controller" />
+<node pkg="robot_state_publisher" name="robot_state_publisher" type="robot_state_publisher" />
+
+    <node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args=" -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -R $(arg roll) -P $(arg pitch) -Y $(arg yaw) -param robot_description -urdf -model mmrobot"
+    output="screen"/>
+    <node name="fake_joint_calibration" pkg="rostopic" type="rostopic"
+        args="pub /calibrated std_msgs/Bool true" />
+
+
+</launch>

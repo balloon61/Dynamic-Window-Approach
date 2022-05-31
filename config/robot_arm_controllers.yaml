@@ -1,0 +1,66 @@
+# Robot name goes here
+mmrobot: 
+  # default controller
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+
+  # Linear slide controller
+  linear_joint: 
+    type: effort_controllers/JointPositionController
+    joint: Linear_joint 
+    pid : {p: 100.0 , i: 0.1 , d: 0.0} 
+    
+  # Left arm controller
+  l_arm_joint1: 
+    type: effort_controllers/JointPositionController
+    joint: left_arm_joint1 
+    pid : {p: 100.0 , i: 0.1 , d: 0.0} 
+  l_arm_joint2: 
+    type: effort_controllers/JointPositionController
+    joint: left_arm_joint2 
+    pid : {p: 100.0 , i: 0.1 , d: 0.0}  
+  l_arm_joint3: 
+    type: effort_controllers/JointPositionController
+    joint: left_arm_joint3
+    pid : {p: 100.0 , i: 0.1 , d: 0.0} 
+  l_gripper_joint: 
+    type: effort_controllers/JointPositionController
+    joint: left_gripper_joint1 
+    pid : {p: 100.0 , i: 0.1 , d: 0.0}   
+  # Right arm controller
+  
+  r_arm_joint1: 
+    type: effort_controllers/JointPositionController
+    joint: right_arm_joint1 
+    pid : {p: 100.0 , i: 0.01 , d: 0.0} 
+  r_arm_joint2: 
+    type: effort_controllers/JointPositionController
+    joint: right_arm_joint2 
+    pid : {p: 100.0 , i: 0.01 , d: 0.0}  
+  r_arm_joint3: 
+    type: effort_controllers/JointPositionController
+    joint: right_arm_joint3 
+    pid : {p: 100.0 , i: 0.01 , d: 0.0} 
+  r_gripper_joint: 
+    type: effort_controllers/JointPositionController
+    joint: right_gripper_joint1 
+    pid : {p: 100.0 , i: 0.01 , d: 0.0}   
+ 
+  #Wheel Controleer
+  #l_wheel_joint:
+  #  type: velocity_controllers/JointVelocityController
+  #  joint: left_wheel_joint
+  #  pid : {p: 10.0 , i: 0.1 , d: 0.0}   
+  #  
+  #r_wheel_joint:
+  #  type: velocity_controllers/JointVelocityController
+  #  joint: right_wheel_joint
+  #  pid : {p: 10.0 , i: 0.1 , d: 0.0}   
+
+  # ....
+  # Controller n
+
+ 
+ 

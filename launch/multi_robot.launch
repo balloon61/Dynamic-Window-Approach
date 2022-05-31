@@ -1,0 +1,42 @@
+<launch>
+
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find mm3)/worlds/factory.world"/>
+ </include>
+<group ns="robot1">
+	<param name="tf_prefix" value="robot1_tf" />
+	<include file="$(find mm3)/launch/one_robot.launch">
+	<arg name="init_pose" value="-x -1 -y 1 -z 0"/>
+	<arg name="robot_name" value="Robot1"/>
+	</include>
+	</group>
+<group ns="robot2">
+	<param name="tf_prefix" value="robot2_tf" />
+	<include file="$(find mm3)/launch/one_robot.launch">
+	<arg name="init_pose" value="-x -1 -y -1 -z 0"/>
+	<arg name="robot_name" value="Robot2"/>
+	</include>
+	</group>
+	<group ns="robot3">
+	<param name="tf_prefix" value="robot3_tf" />
+	<include file="$(find mm3)/launch/one_robot.launch">
+	<arg name="init_pose" value="-x -2 -y -2 -z 0"/>
+	<arg name="robot_name" value="Robot3"/>
+	</include>
+	</group>
+	<group ns="robot4">
+	<param name="tf_prefix" value="robot4_tf" />
+	<include file="$(find mm3)/launch/one_robot.launch">
+	<arg name="init_pose" value="-x -3 -y -3 -z 0"/>
+	<arg name="robot_name" value="Robot4"/>
+	</include>
+	</group>
+	<group ns="robot5">
+	<param name="tf_prefix" value="robot5_tf" />
+	<include file="$(find mm3)/launch/one_robot.launch">
+	<arg name="init_pose" value="-x -4 -y -4 -z 0"/>
+	<arg name="robot_name" value="Robot5"/>
+	</include>
+	</group>
+</launch>
