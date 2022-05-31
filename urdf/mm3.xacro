@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<!-- Name your robot here -->
+<robot name ="mmrobot" xmlns:xacro="http://wiki.ros.org/xacro">
+
+<!-- Include your urdf files here -->
+	<!-- Include Robot's urdf filepath -->
+	<xacro:include filename="mm3.urdf"/>
+	<xacro:include filename="ydlidar.urdf"/>
+	<xacro:property name="camera_size" value="1" />
+ 	<xacro:property name="wheel_radius" value="0.0381"/>
+ 	<xacro:property name="wheel_separation" value="0.29718"/>
+  <link name="base_camera">
+    <visual>
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/d435.dae" />
+      </geometry>
+    </visual>
+  </link>
+
+	<!-- Include Lidar's urdf filepath -->
+
+	!-- Add your gazebo sensors here -->
+	<gazebo reference="base_camera">
+  <sensor name="camera" type="depth">
+    <update_rate>20</update_rate>
+    <camera>
+      <horizontal_fov>1.047198</horizontal_fov>
+      <image>
+        <width>640</width>
+        <height>480</height>
+        <format>R8G8B8</format>
+      </image>
+      <clip>
+        <near>0.05</near>
+        <far>3</far>
+      </clip>
+    </camera>
+    <plugin name="camera_controller" filename="libgazebo_ros_openni_kinect.so">
+      <baseline>0.2</baseline>
+      <alwaysOn>true</alwaysOn>
+      <updateRate>1.0</updateRate>
+      <cameraName>camera_ir</cameraName>
+      <imageTopicName>/mmrobot/camera/color/image_raw</imageTopicName>
+      <cameraInfoTopicName>/mmrobot/camera/color/camera_info</cameraInfoTopicName>
+      <depthImageTopicName>/mmrobot/camera/depth/image_raw</depthImageTopicName>
+      <depthImageInfoTopicName>/mmrobot/camera/depth/camera_info</depthImageInfoTopicName>
+      <pointCloudTopicName>/mmrobot/camera/depth/points</pointCloudTopicName>
+      <frameName>camera_frame</frameName>
+      <pointCloudCutoff>0.5</pointCloudCutoff>
+      <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
+      <distortionK1>0.00000001</distortionK1>
+      <distortionK2>0.00000001</distortionK2>
+      <distortionK3>0.00000001</distortionK3>
+      <distortionT1>0.00000001</distortionT1>
+      <distortionT2>0.00000001</distortionT2>
+      <CxPrime>0</CxPrime>
+      <Cx>0</Cx>
+      <Cy>0</Cy>
+      <focalLength>0</focalLength>
+      <hackBaseline>0</hackBaseline>
+    </plugin>
+  </sensor>
+</gazebo>
+ 
+	<gazebo reference="base_laser">
+		<!-- <gravity>true</gravity> -->
+		<!-- Gazebo has fixed set of Sensors types. Check them out here <> -->
+		<sensor name="laser" type="ray"> 
+			<!-- Add in your sensor characteristics -->
+			<pose> 0 0 0 0 0 0 </pose>
+			<visualise>true</visualise>
+			<update_rate>40</update_rate>
+			<!-- <always_on>true</always_on> -->
+			<ray>
+				<scan>
+					<horizontal>
+						<samples>720</samples>
+						<resolution>1</resolution>
+						<min_angle>-1.570796</min_angle>
+              			<max_angle>1.570796</max_angle>
+              		</horizontal>
+              	</scan>
+              	<range>
+              		<min>0.10</min>
+              		<max>30.0</max>
+              		<resolution>0.01</resolution>
+              	</range>
+              	<noise>
+              		<type>gaussian</type>
+              		<mean>0.0</mean>
+              		<stddev>0.01</stddev>
+              	</noise>
+            </ray>
+            <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+            	<!-- Use topic name as /my_robot/scan -->
+				<topicName>/mmrobot/scan</topicName> 
+				<frameName>laser_frame</frameName>
+			</plugin>
+		</sensor>
+	</gazebo>
+
+<!--  Gazebo plugin for control here is already added for you -->
+  <gazebo>
+    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+      <alwaysOn>false</alwaysOn>
+      <legacyMode>false</legacyMode>
+      <updateRate>20</updateRate>
+      <leftJoint>left_wheel_joint</leftJoint>
+      <rightJoint>right_wheel_joint</rightJoint>
+      <wheelSeparation>${wheel_separation}</wheelSeparation>
+      <wheelDiameter>${wheel_radius * 2}</wheelDiameter>
+      <torque>20</torque>
+      <commandTopic>/mmrobot/mobile_controller/cmd_vel</commandTopic>
+      <odometryTopic>/mmrobot/mobile_controller/odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
+    </plugin>
+  </gazebo>
+  <gazebo>
+	<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+		<robotNamespace>/mmrobot</robotNamespace>
+			<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+			<legacyModeNS>true</legacyModeNS>
+		</plugin>
+	</gazebo>
+    <joint name="lidarGlue" type="fixed">
+        <parent link="base_link"/>
+        <child link="base_laser"/>
+        <origin xyz="0.0 0.0 0.057"/>
+    </joint>
+   <joint name="cameraGlue" type="fixed">
+        <parent link="base_link"/>
+        <child link="base_camera"/>
+        <origin xyz="0.05 0.0 0.8"/>
+    </joint>
+    
+    <!--
+    <joint name="dummy_to_goal" type = "floating">
+        <parent link="dummy link"/>
+        <child link="base_goal"/>
+        <origin xyz="2 2 0"/>
+    </joint> -->
+
+
+</robot>	
+
+

@@ -1,0 +1,792 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="mm3">
+
+  <!--Base Footprint-->
+  <link name="base_footprint">
+
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <box size="0.001 0.001 0.001" />
+        </geometry>
+    </visual>
+  </link>
+
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.00173390217564579 0 0.0843061553484707"
+        rpy="0 0 0" />
+      <mass
+        value="0.349284003139974" />
+      <inertia
+        ixx="0.0304523858984784"
+        ixy="5.50406492658683E-19"
+        ixz="0.00025216663663645"
+        iyy="0.030899339272931"
+        iyz="-4.35048782183177E-18"
+        izz="0.014373902759802" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link
+    name="left_wheel_link">
+    <inertial>
+      <origin
+        xyz="0 -0.00381000000000001 5.55111512312578E-17"
+        rpy="0 0 0" />
+      <mass
+        value="1.5346943989182399" />
+      <inertia
+        ixx="1.27787049860377E-05"
+        ixy="1.68083100470696E-24"
+        ixz="1.27720288529703E-22"
+        iyy="2.52216583959841E-05"
+        iyz="-2.76286596398839E-23"
+        izz="1.27787049860377E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/left_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/left_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0634999999999999 0.1524 -0.00381000000000004"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_wheel_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="right_wheel_link">
+    <inertial>
+      <origin
+        xyz="0 0.00380999999999998 -5.55111512312578E-17"
+        rpy="0 0 0" />
+      <mass
+        value="1.5346943989182401" />
+      <inertia
+        ixx="1.27787049860378E-05"
+        ixy="2.61579325107647E-23"
+        ixz="6.80514049764725E-22"
+        iyy="2.52216583959842E-05"
+        iyz="2.5212465070615E-24"
+        izz="1.27787049860378E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/right_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/right_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0635 -0.1524 -0.00381000000000004"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_wheel_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="slider_link">
+    <inertial>
+      <origin
+        xyz="0.0149538868469983 5.55111512312578E-17 2.22044604925031E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.00147368863515062" />
+      <inertia
+        ixx="3.41312050549112E-05"
+        ixy="-2.12817027997643E-20"
+        ixz="2.00111533788828E-20"
+        iyy="5.0015957687414E-05"
+        iyz="8.4431467695391E-09"
+        izz="5.99790889646899E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/slider_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/slider_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Linear_joint"
+    type="prismatic">
+    <origin
+      xyz="0 0 0.465419250997699"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="slider_link" />
+    <axis
+      xyz="0 0 1" />
+    <dynamics damping="0.0" friction="2.0" />
+    <limit
+      lower="-0.3"
+      upper="0.4"
+      effort="20"
+      velocity="1" />
+  </joint>
+  <link
+    name="left_arm_link1">
+    <inertial>
+      <origin
+        xyz="5.55111512312578E-17 -7.54951656745106E-15 0.00721868535211012"
+        rpy="0 0 0" />
+      <mass
+        value="0.000262271552264886" />
+      <inertia
+        ixx="3.49057884866459E-06"
+        ixy="-1.91905902112302E-21"
+        ixz="-2.04131450052993E-22"
+        iyy="1.59254226762019E-06"
+        iyz="2.76824983987479E-19"
+        izz="3.31612378770382E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/left_arm_link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/left_arm_link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_arm_joint1"
+    type="revolute">
+    <origin
+      xyz="0 0.06169 0"
+      rpy="-1.5707963267949 -0.104271521762714 0" />
+    <parent
+      link="slider_link" />
+    <child
+      link="left_arm_link1" />
+    <axis
+      xyz="0 0 1" />
+    <dynamics damping="0.0" friction="0.0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="20"
+      velocity="1" />
+  </joint>
+  <link
+    name="left_arm_link2">
+    <inertial>
+      <origin
+        xyz="-0.000386050977486174 0.131149620889107 0.00408244968667737"
+        rpy="0 0 0" />
+      <mass
+        value="0.000269559994245249" />
+      <inertia
+        ixx="0.000626666445812035"
+        ixy="1.01125491697749E-07"
+        ixz="4.22206647780715E-09"
+        iyy="5.26421344069657E-05"
+        iyz="-6.97143268529835E-07"
+        izz="0.000646289920709439" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/left_arm_link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/left_arm_link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_arm_joint2"
+    type="revolute">
+    <origin
+      xyz="0 0.000409999999999966 0.0328500000000012"
+      rpy="-1.5707963267949 1.42649840138861 3.14159265358979" />
+    <parent
+      link="left_arm_link1" />
+    <child
+      link="left_arm_link2" />
+    <axis
+      xyz="0 0 1" />
+    <dynamics damping="0.0" friction="0.0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="20"
+      velocity="1" />
+  </joint>
+  <link
+    name="left_arm_link3">
+    <inertial>
+      <origin
+        xyz="7.7585993185636E-12 0.127666730960711 0.00248796280788233"
+        rpy="0 0 0" />
+      <mass
+        value="0.000117160247772208" />
+      <inertia
+        ixx="0.000432375218898243"
+        ixy="1.9235141209419E-13"
+        ixz="-1.97571929113185E-13"
+        iyy="1.17109799447477E-05"
+        iyz="-3.77855824152796E-11"
+        izz="0.000431190534395112" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/left_arm_link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/left_arm_link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_arm_joint3"
+    type="revolute">
+    <origin
+      xyz="0 0.275500000000001 0.00132500000000046"
+      rpy="0 0 -1.22699295300387" />
+    <parent
+      link="left_arm_link2" />
+    <child
+      link="left_arm_link3" />
+    <axis
+      xyz="0 0 1" />
+    <dynamics damping="0.0" friction="0.0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="20"
+      velocity="1" />
+  </joint>
+  <link
+    name="left_gripper_link1">
+    <inertial>
+      <origin
+        xyz="-1.4607334100844E-06 -0.00194327287027751 0.0117967697171139"
+        rpy="0 0 0" />
+      <mass
+        value="0.000053976956819555" />
+      <inertia
+        ixx="3.80757548207709E-05"
+        ixy="7.15084343138609E-10"
+        ixz="4.25117723141182E-10"
+        iyy="1.26201502037341E-05"
+        iyz="6.99476870158451E-06"
+        izz="3.03777532412141E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/left_gripper_link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/left_gripper_link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_gripper_joint1"
+    type="revolute">
+    <origin
+      xyz="0 0.2457 0.00252500000000067"
+      rpy="1.5707963267949 0.0962411704932018 3.14159265358979" />
+    <parent
+      link="left_arm_link3" />
+    <child
+      link="left_gripper_link1" />
+    <axis
+      xyz="0 0 1" />
+    <dynamics damping="0.0" friction="10.0" />
+    <limit
+      lower="3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_arm_link1">
+    <inertial>
+      <origin
+        xyz="1.38777878078145E-17 7.43849426498855E-15 0.00721868535211012"
+        rpy="0 0 0" />
+      <mass
+        value="0.000662271552264882" />
+      <inertia
+        ixx="3.49057884866457E-06"
+        ixy="1.64112633530521E-21"
+        ixz="2.17326351823307E-21"
+        iyy="1.59254226762017E-06"
+        iyz="-2.76309833976513E-19"
+        izz="3.31612378770381E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/right_arm_link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/right_arm_link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_arm_joint1"
+    type="revolute">
+    <origin
+      xyz="0 -0.0616899999999999 0"
+      rpy="1.5707963267949 -0.113951864414894 0" />
+    <parent
+      link="slider_link" />
+    <child
+      link="right_arm_link1" />
+    <axis
+      xyz="0 0 1" />
+    <dynamics damping="0.0" friction="0.0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="20"
+      velocity="1" />
+  </joint>
+  <link
+    name="right_arm_link2">
+    <inertial>
+      <origin
+        xyz="0.000386050993758116 0.131149615601439 -0.00408244949469516"
+        rpy="0 0 0" />
+      <mass
+        value="0.000269559986614646" />
+      <inertia
+        ixx="0.000626666444389549"
+        ixy="-1.01125387345862E-07"
+        ixz="4.22200360437853E-09"
+        iyy="5.26421329293233E-05"
+        iyz="6.97144066518244E-07"
+        izz="0.000646289919296432" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/right_arm_link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/right_arm_link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_arm_joint2"
+    type="revolute">
+    <origin
+      xyz="0 -0.0041000000000001 0.03285"
+      rpy="1.5707963267949 -0.223639177067847 0" />
+    <parent
+      link="right_arm_link1" />
+    <child
+      link="right_arm_link2" />
+    <axis
+      xyz="0 0 1" />
+    <dynamics damping="0.0" friction="0.0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="20"
+      velocity="1" />
+  </joint>
+  <link
+    name="right_arm_link3">
+    <inertial>
+      <origin
+        xyz="-8.03945798821815E-12 0.127666730954126 -0.00248796280778008"
+        rpy="0 0 0" />
+      <mass
+        value="0.000117160247772503" />
+      <inertia
+        ixx="0.000432375218957"
+        ixy="1.31457535161802E-13"
+        ixz="-2.12472692163925E-13"
+        iyy="1.17109798859883E-05"
+        iyz="3.76200031565623E-11"
+        izz="0.00043119053439511" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/right_arm_link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/right_arm_link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_arm_joint3"
+    type="revolute">
+    <origin
+      xyz="0 0.275500000000005 -0.00132500000000046"
+      rpy="0 0 -1.19168018686034" />
+    <parent
+      link="right_arm_link2" />
+    <child
+      link="right_arm_link3" />
+    <axis
+      xyz="0 0 1" />
+    <dynamics damping="0.0" friction="0.0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="20"
+      velocity="1" />
+  </joint>
+  <link
+    name="right_gripper_link1">
+    <inertial>
+      <origin
+        xyz="1.4607334758443E-06 0.00194327287032903 0.0117967697171131"
+        rpy="0 0 0" />
+      <mass
+        value="0.0000539769568195551" />
+      <inertia
+        ixx="3.8075754820771E-05"
+        ixy="7.1508434317527E-10"
+        ixz="-4.25117723114839E-10"
+        iyy="1.26201502037342E-05"
+        iyz="-6.99476870158452E-06"
+        izz="3.03777532412142E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/right_gripper_link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mm3/meshes/right_gripper_link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_gripper_joint1"
+    type="revolute">
+    <origin
+      xyz="0 0.245700000000154 -0.00252499999994871"
+      rpy="-1.5707963267949 -0.0104102836047576 0" />
+    <parent
+      link="right_arm_link3" />
+    <child
+      link="right_gripper_link1" />
+    <axis
+      xyz="0 0 1" />
+    <dynamics damping="0.0" friction="10.0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+     <!--base_link to base_footprint Joint-->
+  <joint name="base_link_joint" type="fixed">
+      <origin
+        xyz="0.00173390217564579 0 0.0843061553484707"
+        rpy="0 0 0" />
+    <parent link="base_footprint"/>
+    <child link="base_link" />
+  </joint>
+
+  <transmission name="Linear_joint_trans">
+    <type> transmission_interface/SimpleTransmission</type>
+    <joint name="Linear_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="Linear_joint_motor">
+      <mechanicalReduction>50</mechanicalReduction>
+    </actuator>
+  </transmission>
+ 
+  <transmission name="left_arm_joint1_trans">
+    <type> transmission_interface/SimpleTransmission</type>
+    <joint name="left_arm_joint1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="left_arm_joint1_motor">
+      <mechanicalReduction>50</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="left_arm_joint2_trans">
+    <type> transmission_interface/SimpleTransmission</type>
+    <joint name="left_arm_joint2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="left_arm_joint2_motor">
+      <mechanicalReduction>50</mechanicalReduction>
+    </actuator>
+  </transmission>
+     <transmission name="left_arm_joint3_trans">
+    <type> transmission_interface/SimpleTransmission</type>
+    <joint name="left_arm_joint3">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="left_arm_joint3_motor">
+      <mechanicalReduction>50</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="left_gripper_joint1_trans">
+    <type> transmission_interface/SimpleTransmission</type>
+    <joint name="left_gripper_joint1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="left_gripper_joint1_motor">
+      <mechanicalReduction>50</mechanicalReduction>
+    </actuator>
+  </transmission> 
+  
+      <transmission name="right_arm_joint1_trans">
+    <type> transmission_interface/SimpleTransmission</type>
+    <joint name="right_arm_joint1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="right_arm_joint1_motor">
+      <mechanicalReduction>50</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="right_arm_joint2_trans">
+    <type> transmission_interface/SimpleTransmission</type>
+    <joint name="right_arm_joint2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="right_arm_joint2_motor">
+      <mechanicalReduction>50</mechanicalReduction>
+    </actuator>
+  </transmission>
+    <transmission name="right_arm_joint3_trans">
+    <type> transmission_interface/SimpleTransmission</type>
+    <joint name="right_arm_joint3">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="right_arm_joint3_tor">
+      <mechanicalReduction>50</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="right_gripper_joint1_trans">
+    <type> transmission_interface/SimpleTransmission</type>
+    <joint name="right_gripper_joint1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="right_gripper_joint1_motor">
+      <mechanicalReduction>50</mechanicalReduction>
+    </actuator>
+  </transmission>  
+
+
+
+</robot>
