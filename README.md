@@ -1,6 +1,9 @@
 # Dynamic-Window-Approach
-A implement of global planner and local planner
-## Step
+A implement of global planner (A*) and local planner (Dynamic Window Approach). This package using ROS navigation stack for mapping and locallization, and write the global planner and local planner.
+
+## Requirement:
+ROS, Gazebo, ROS navigation stack
+## Step:
 
 Clone mm3 under ~/catkin_src/src and type the following command
 ```
