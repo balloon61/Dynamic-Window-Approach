@@ -21,6 +21,7 @@ rosrun mm3 arm_control.py
 ### Robot Navigation and Arm Manipulation Demo 
 ```
 roslaunch mm3 demo.launch
+# Arm Manipulation Demo, make the dual-arm follow a predefined trajectory by using Jacobian 
 # In a new terminal, type:
 rosrun mm3 self_control.py
 ```
