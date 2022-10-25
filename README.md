@@ -25,6 +25,7 @@ roslaunch mm3 demo.launch
 # In a new terminal, type:
 rosrun mm3 self_control.py
 ```
+## Demo
 ### path planning and local planner demo
 https://www.youtube.com/watch?v=q2g9haRAJWM&ab_channel=Po-LunChen
 ### Arm control demo
